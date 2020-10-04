@@ -1,15 +1,16 @@
-android
-ios
-
-src/assets
+.expo
+.expo-shared
 
 node_modules
 
-.buckconfig
+src/assets
+
 .gitignore
 .prettierignore
-.flowconfig
-.gitattributes
+.prettierrc
+
+app.json
+babel.config.js
 
 package.json
 package-lock.json

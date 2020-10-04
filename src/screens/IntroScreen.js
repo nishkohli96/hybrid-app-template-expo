@@ -3,12 +3,19 @@ import { Text, Image, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Onboarding from 'react-native-onboarding-swiper';
 import { AsyncStorage } from 'react-native';
+import { useFonts } from 'expo-font';
+import { AppLoading } from 'expo';
 
 const IntroScreen = () => {
+    let [fontsLoaded] = useFonts({
+        'Piazzolla-Bold': require('../assets/fonts/Piazzolla-Bold.ttf'),
+        'Piazzolla-Light': require('../assets/fonts/Piazzolla-Light.ttf'),
+    });
+
     const navigation = useNavigation(); /* Navigation Hook */
 
     const gotoMainPage = async () => {
-        await AsyncStorage.setItem('firstTime', 'false');
+        // await AsyncStorage.setItem('firstTime', 'false');
         navigation.navigate('NavDrawer');
     };
 
@@ -40,35 +47,39 @@ const IntroScreen = () => {
     // checkFirstUse();
 
     /* Refer https://www.npmjs.com/package/react-native-onboarding-swiper  */
-    return (
-        <Onboarding
-            onSkip={() => gotoMainPage()}
-            onDone={() => gotoMainPage()}
-            nextLabel={<NextBtn />}
-            skipLabel={<SkipBtn />}
-            DoneButtonComponent={DoneBtn}
-            pages={[
-                {
-                    backgroundColor: 'skyblue',
-                    image: <PageImage />,
-                    title: 'Welcome To LearnReactNative',
-                    subtitle: 'Learn Fundamentals of React-Native',
-                },
-                {
-                    backgroundColor: 'red',
-                    image: <PageImage />,
-                    title: 'Demos in the form of a List',
-                    subtitle: 'Touch to view or expand for its description',
-                },
-                {
-                    backgroundColor: 'yellow',
-                    image: <PageImage />,
-                    title: 'Enjoy....',
-                    subtitle: 'Feel Free to Edit the Code and Experiment',
-                },
-            ]}
-        />
-    );
+    if (!fontsLoaded) {
+        return <AppLoading />;
+    } else {
+        return (
+            <Onboarding
+                onSkip={() => gotoMainPage()}
+                onDone={() => gotoMainPage()}
+                nextLabel={<NextBtn />}
+                skipLabel={<SkipBtn />}
+                DoneButtonComponent={DoneBtn}
+                pages={[
+                    {
+                        backgroundColor: 'skyblue',
+                        image: <PageImage />,
+                        title: 'Welcome to myApp',
+                        subtitle: "I'm sure you would love it!!",
+                    },
+                    {
+                        backgroundColor: 'red',
+                        image: <PageImage />,
+                        title: 'Easy to Customize',
+                        subtitle: 'Everything properly documented',
+                    },
+                    {
+                        backgroundColor: 'yellow',
+                        image: <PageImage />,
+                        title: 'Enjoy....',
+                        subtitle: 'Feel Free to Edit the Code and Experiment',
+                    },
+                ]}
+            />
+        );
+    }
 };
 
 const styles = StyleSheet.create({
