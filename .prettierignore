@@ -1,0 +1,16 @@
+android
+ios
+
+src/assets
+
+node_modules
+
+.buckconfig
+.gitignore
+.prettierignore
+.flowconfig
+.gitattributes
+
+package.json
+package-lock.json
+yarn.lock
