@@ -33,10 +33,13 @@ const NavDrawer = () => {
             </View>
         );
     }
-                
+
     return (
-        <Drawer.Navigator initialRouteName="HomeScreen"  overlayColor="transparent"
-            drawerContent={(props) => <DrawerLayout {...props} />}>
+        <Drawer.Navigator
+            initialRouteName="HomeScreen"
+            overlayColor="transparent"
+            drawerContent={(props) => <DrawerLayout {...props} />}
+        >
             <Drawer.Screen name="HomeScreen" component={HomeScreen} />
             <Drawer.Screen
                 name="Notifications"

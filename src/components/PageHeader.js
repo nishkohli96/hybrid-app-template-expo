@@ -5,21 +5,19 @@ import { useNavigation } from '@react-navigation/native';
 
 const DrawerHeader = ({ title }) => {
     const navigation = useNavigation();
-    
-    return(
+
+    return (
         <View style={styles.container}>
             <Icon
                 name="arrow-back"
                 size={30}
                 color="#900"
                 onPress={() => navigation.goBack()}
-            ></Icon> 
-            <View style={styles.halfRow}>
-                <Text style={styles.headerText}>{title}</Text>
-            </View>
+            ></Icon>
+            <Text style={styles.headerText}>{title}</Text>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -27,15 +25,13 @@ const styles = StyleSheet.create({
         paddingTop: 10,
         paddingBottom: 10,
         paddingLeft: 20,
-        textAlign: "center",
-        display: 'flex',
-        justifyContent: 'center'
-    },
-    halfRow: {
+        textAlign: 'center',
+        flexDirection: 'row',
     },
     headerText: {
         fontSize: 22,
-    }
+        marginLeft: 20,
+    },
 });
 
 export default DrawerHeader;

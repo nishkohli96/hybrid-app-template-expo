@@ -3,7 +3,6 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import DrawerHeader from '../components/DrawerHeader';
-import PageHeader from '../components/PageHeader';
 import IntroScreen1 from '../components/IntroScreen1';
 import IntroScreen2 from '../components/IntroScreen2';
 import IntroScreen3 from '../components/IntroScreen3';
@@ -12,15 +11,14 @@ const Tab = createMaterialBottomTabNavigator();
 /* Refer https://reactnavigation.org/docs/material-bottom-tab-navigator  */
 
 const HomeScreen = () => {
-
     const InitialScreen = () => {
-        return(
+        return (
             <>
-                <PageHeader title="rt"/>
+                <DrawerHeader />
                 <IntroScreen1 />
             </>
         );
-    }
+    };
 
     return (
         <Tab.Navigator

@@ -5,8 +5,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const DrawerHeader = () => {
     const navigation = useNavigation();
-    
-    return(
+
+    return (
         <View style={styles.container}>
             <Icon
                 name="menu"
@@ -16,15 +16,15 @@ const DrawerHeader = () => {
             ></Icon>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
         height: 50,
         paddingTop: 10,
         paddingBottom: 10,
-        paddingLeft: 20
-    }
+        paddingLeft: 20,
+    },
 });
 
 export default DrawerHeader;
