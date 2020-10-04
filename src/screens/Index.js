@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { AsyncStorage } from 'react-native';
 import { View, Text } from 'react-native';
 import IntroScreen from './IntroScreen';
-// import NavDrawer from './NavDrawer';
+import NavDrawer from './NavDrawer';
 
 const Stack = createStackNavigator();
 
@@ -27,7 +27,7 @@ const Index = () => {
                 />
                 <Stack.Screen
                     name="NavDrawer"
-                    component={We}
+                    component={NavDrawer}
                     options={{ headerShown: false }}
                 />
             </Stack.Navigator>
