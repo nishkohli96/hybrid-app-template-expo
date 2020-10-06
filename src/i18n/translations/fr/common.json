@@ -1,0 +1,15 @@
+{
+    "APP": {
+        "version": "v : {{appVersion}}"
+    },
+    "DRAWER": {
+        "home": "Accueil",
+        "profile": "Profil",
+        "notifications": "Notifications",
+        "settings": "Réglages",
+        "help": "Support d'aide"
+    },
+    "USER": {
+        "hiuser": "Salut {{userName}}"
+    }
+}

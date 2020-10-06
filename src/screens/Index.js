@@ -1,20 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { View, Text } from 'react-native';
 import IntroScreen from './IntroScreen';
 import NavDrawer from './NavDrawer';
 
 const Stack = createStackNavigator();
-
-const We = () => {
-    return (
-        <View>
-            <Text>Screen 2</Text>
-        </View>
-    );
-};
 
 const Index = () => {
     return (

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, Image, StyleSheet, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Onboarding from 'react-native-onboarding-swiper';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import { useFonts } from 'expo-font';
 import { AppLoading } from 'expo';
 

@@ -1,19 +1,22 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { useTheme, Avatar, Title, Caption, Drawer } from 'react-native-paper';
+import { useTheme, Avatar, Title, Drawer } from 'react-native-paper';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
-
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useTranslation } from 'react-i18next';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native';
+import packageJson from '../../package.json';
+import {
+    ThemedView,
+    ThemedText,
+} from '../components/styled-components/ThemedComps';
 
 const DrawerLayout = (props) => {
-    const paperTheme = useTheme();
     const navigation = useNavigation();
-
-    // const { signOut, toggleTheme } = React.useContext(AuthContext);
+    const { t } = useTranslation('common');
 
     return (
-        <View style={{ flex: 1 }}>
+        <ThemedView style={styles.container}>
             <DrawerContentScrollView {...props}>
                 <View style={styles.drawerContent}>
                     <View style={styles.userInfoSection}>
@@ -31,8 +34,9 @@ const DrawerLayout = (props) => {
                                     flexDirection: 'column',
                                 }}
                             >
-                                <Title style={styles.title}>John Doe</Title>
-                                <Caption style={styles.caption}>@j_doe</Caption>
+                                <ThemedText style={styles.title}>
+                                    {t('USER.hiuser', { userName: 'Guest' })}
+                                </ThemedText>
                             </View>
                         </View>
                     </View>
@@ -41,12 +45,14 @@ const DrawerLayout = (props) => {
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
-                                    name="home-outline"
+                                    name="md-home-outline"
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Home"
+                            label={() => (
+                                <ThemedText>{t('DRAWER.home')}</ThemedText>
+                            )}
                             onPress={() => {
                                 navigation.navigate('HomeScreen');
                             }}
@@ -54,12 +60,14 @@ const DrawerLayout = (props) => {
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
-                                    name="account-outline"
+                                    name="person-outline"
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Profile"
+                            label={() => (
+                                <ThemedText>{t('DRAWER.profile')}</ThemedText>
+                            )}
                             onPress={() => {
                                 navigation.navigate('Notifications');
                             }}
@@ -67,14 +75,18 @@ const DrawerLayout = (props) => {
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
-                                    name="bookmark-outline"
+                                    name="notifications-outline"
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Bookmarks"
+                            label={() => (
+                                <ThemedText>
+                                    {t('DRAWER.notifications')}
+                                </ThemedText>
+                            )}
                             onPress={() => {
-                                navigation.navigate('IntroScreen1');
+                                navigation.navigate('IntroScreen3');
                             }}
                         />
                         <DrawerItem
@@ -85,22 +97,26 @@ const DrawerLayout = (props) => {
                                     size={size}
                                 />
                             )}
-                            label="Settings"
+                            label={() => (
+                                <ThemedText>{t('DRAWER.settings')}</ThemedText>
+                            )}
                             onPress={() => {
-                                navigation.navigate('IntroScreen2');
+                                navigation.navigate('IntroScreen1');
                             }}
                         />
                         <DrawerItem
                             icon={({ color, size }) => (
                                 <Icon
-                                    name="account-check-outline"
+                                    name="chatbox-ellipses-outline"
                                     color={color}
                                     size={size}
                                 />
                             )}
-                            label="Support"
+                            label={() => (
+                                <ThemedText>{t('DRAWER.help')}</ThemedText>
+                            )}
                             onPress={() => {
-                                navigation.navigate('IntroScreen3');
+                                navigation.navigate('IntroScreen2');
                             }}
                         />
                     </Drawer.Section>
@@ -108,20 +124,23 @@ const DrawerLayout = (props) => {
             </DrawerContentScrollView>
             <Drawer.Section style={styles.bottomDrawerSection}>
                 <DrawerItem
-                    icon={({ color, size }) => (
-                        <Icon name="exit-to-app" color={color} size={size} />
+                    label={() => (
+                        <ThemedText>
+                            {t('APP.version', {
+                                appVersion: packageJson.version,
+                            })}
+                        </ThemedText>
                     )}
-                    label="Sign Out"
-                    onPress={() => {
-                        signOut();
-                    }}
                 />
             </Drawer.Section>
-        </View>
+        </ThemedView>
     );
 };
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
     drawerContent: {
         flex: 1,
     },
@@ -129,9 +148,9 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
     },
     title: {
-        fontSize: 16,
-        marginTop: 3,
-        fontWeight: 'bold',
+        fontSize: 25,
+        marginTop: 8,
+        fontWeight: '100',
     },
     caption: {
         fontSize: 14,
